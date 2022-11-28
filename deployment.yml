@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serviciolocal
+  labels:
+    app: serviciolocal
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: serviciolocal
+  template:
+    metadata:
+      labels:
+        app: serviciolocal
+    spec:
+      containers:
+      - name: serviciolocal
+        image: jadevlaplata/localservice:1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
